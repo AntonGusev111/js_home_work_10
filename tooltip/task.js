@@ -1,12 +1,12 @@
 function prompt(){
     const prompts = document.querySelectorAll('.has-tooltip');
-    let tip = document.querySelector('.tooltip'); 
-    let previos = 0;
+    let tip = document.querySelector('.tooltip');
     for (let i = 0; i < prompts.length; i++){
         prompts[i].addEventListener("click", function(e){
             let tipActive = document.getElementsByClassName('tooltip tooltip_active');
             if (tipActive[0] != undefined && tipActive[0].textContent == prompts[i].title){
-                tipActive[0].remove()
+                tipActive[0].className = 'tooltip';
+                e.preventDefault()
                 return
                 }
             const {top, left} = prompts[i].getBoundingClientRect();

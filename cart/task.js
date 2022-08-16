@@ -30,21 +30,19 @@ function changeQuantity(){
 
 function addToCart(product){
     const cart = document.querySelector('.cart__products');
-    let cartProducts = document.getElementsByClassName('cart__product');
-    if (cartProducts.length == 0){
-        cart.insertBefore(product, null);
-        return false
+    let cartProducts = document.querySelectorAll('.cart__product');
+    const position = Array.from(cartProducts).find(item => item.dataset.id ==  product.children[0].dataset.id);
+    if (position){
+        console.log(position.children[1].textContent)
+        position.children[1].textContent = Number(position.children[1].textContent) + Number(product.children[0].children[1].textContent)
     }
-    else{
-        for (let i = 0; i < cartProducts.length; i++){
-            if (cartProducts[i].dataset.id == product.children[0].dataset.id){
-               cartProducts[i].children[1].textContent = Number(cartProducts[i].children[1].textContent)+Number(product.children[0].children[1].textContent);
-                return false
-            }
-        }
+    else {
         cart.insertBefore(product, null);
     }
-
 }
+
+
+
+
 
 changeQuantity()
