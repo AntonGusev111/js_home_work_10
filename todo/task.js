@@ -2,17 +2,16 @@ function taskHandler(){
     const btn = document.getElementById('tasks__add')
     btn.addEventListener('click', event => {
         let input = document.querySelector('.tasks__input').value;
-        if (input.trim() != '' ){
+        
+        if (input.trim() ){
             addTask(input);
             document.querySelector('.tasks__input').value = '';
-            event.preventDefault(); 
-            let cross =  document.querySelectorAll('.task__remove');
-            for (let i=0; i < cross.length; i++){
-                cross[i].onclick = function() {
-                    cross[i].parentElement.remove(); // Мне очень не нравится как получилось реализовать удаление, прошу дать комментарий, как это сделать иначе. Благодарю за ответ
-                  }
-            }
+            let cross =  document.querySelector('.task__remove');
+            cross.addEventListener('click', function(){
+                cross.parentElement.remove(); // Я сделал так, как вы описали (вероятно не правильно вас понял), теперь удаляется только последняя задача. Прошу подсказать как это поправить
+            })           
         } 
+        event.preventDefault();
     })
 }
 
