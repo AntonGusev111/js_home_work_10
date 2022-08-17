@@ -5,12 +5,14 @@ function taskHandler(){
         if (input.trim() ){
             addTask(input);
             document.querySelector('.tasks__input').value = '';
-            let cross =  document.getElementsByClassName('task__remove');
-            cross[cross.length - 1].addEventListener('click', function(){
-                cross[cross.length - 1].parentElement.remove();
+            let cross =  document.querySelectorAll('.task__remove');
+            for (let i = 0; i < cross.length; i++){
+                cross[i].addEventListener('click', function(){
+                cross[i].parentElement.remove();
             })
         
-        } 
+        }
+    } 
         event.preventDefault();
     })
 }
